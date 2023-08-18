@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 
-function Section({ title, description, backgroundImg, leftBtnText, rightBtnText }) {
+function Section({ title, description, backgroundImg, leftBtnText, rightBtnText, price }) {
     return (
 
         <>
@@ -10,6 +10,7 @@ function Section({ title, description, backgroundImg, leftBtnText, rightBtnText 
                 <Fade bottom>
                     <ItemText>
                         <h1>{title}</h1>
+                        <p>{price}</p>
                         <p>{description}</p>
                     </ItemText>
                 </Fade>
@@ -49,6 +50,9 @@ const Wrap = styled.div`
 const ItemText = styled.div`
             padding-top:15vh;
             text-align:center;
+            p{
+                padding-top:5px;
+            }
             `
 const ButtonGroup = styled.div`
             display:flex;

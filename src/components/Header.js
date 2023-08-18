@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import styled from "styled-components";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -5,7 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import LanguageIcon from '@mui/icons-material/Language';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import { selectCars } from '../features/car/carSlice';
+import { selectCars, selectVehiclesName, selectVData } from '../features/car/carSlice';
 import { useSelector } from 'react-redux';
 import '../index.css';
 const Header = () => {
@@ -13,6 +14,8 @@ const Header = () => {
     const [bugerStatus, setBurgerStatus] = useState(false);
     const [navbar, setNavbar] = useState(false);
     const cars = useSelector(selectCars);
+    const vehicals = useSelector(selectVehiclesName);
+    const vehicalsData = useSelector(selectVData);
 
 
     const changeColor = () => {
@@ -28,24 +31,19 @@ const Header = () => {
 
     const [isTargetVisible, setIsTargetVisible] = useState(false);
 
-    const mainNav = document.querySelector('.HeaderContainer');
     const handleMouseEnter = () => {
         setIsTargetVisible(true);
-        mainNav.style.backgroundColor = 'White';
         setNavbar(true);
     };
 
     const handleMouseLeave = () => {
         setIsTargetVisible(false);
-        mainNav.style.backgroundColor = 'transparent';
         setNavbar(false);
     };
 
     return (
         <>
             <Container className='HeaderContainer' onMouseLeave={handleMouseLeave}>
-
-
                 <a>
                     <svg viewBox="0 0 342 35" className="teslalogo">
                         <path d="M0 .1a9.7 9.7 0 0 0 7 7h11l.5.1v27.6h6.8V7.3L26 7h11a9.8 9.8 0 0 0 7-7H0zm238.6 0h-6.8v34.8H263a9.7 9.7 0 0 0 6-6.8h-30.3V0zm-52.3 6.8c3.6-1 6.6-3.8 7.4-6.9l-38.1.1v20.6h31.1v7.2h-24.4a13.6 13.6 0 0 0-8.7 7h39.9v-21h-31.2v-7h24zm116.2 28h6.7v-14h24.6v14h6.7v-21h-38zM85.3 7h26a9.6 9.6 0 0 0 7.1-7H78.3a9.6 9.6 0 0 0 7 7zm0 13.8h26a9.6 9.6 0 0 0 7.1-7H78.3a9.6 9.6 0 0 0 7 7zm0 14.1h26a9.6 9.6 0 0 0 7.1-7H78.3a9.6 9.6 0 0 0 7 7zM308.5 7h26a9.6 9.6 0 0 0 7-7h-40a9.6 9.6 0 0 0 7 7z" fill="currentColor"
@@ -58,8 +56,6 @@ const Header = () => {
                         // eslint-disable-next-line jsx-a11y/anchor-is-valid
                         <a className={navbar ? 'navbar navHeader' : 'navbarActive navHeader'} onMouseEnter={handleMouseEnter}
                             key={index} href='#'>{car}</a>
-
-
                     ))}
                 </Menu>
                 <RightMenu className={navbar ? 'navbar' : 'navbarActive'}>
@@ -87,51 +83,28 @@ const Header = () => {
                 <Container2 className='HeaderData' onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}>
                     <Head1>
-                        <div>
-                            <img src="/images/headImg/Model-S.avif" alt="" srcset="" />
-                            <h3>Model-S</h3>
-                            <p>
-                                <span>Learn</span>
-                                <span>Order</span>
-                            </p>
-                        </div>
-                        <div>
-                            <img src="/images/headImg/Model-S.avif" alt="" srcset="" />
-                            <h3>Model-S</h3>
-                            <p>
-                                <span>Learn</span>
-                                <span>Order</span>
-                            </p>
-                        </div>
-                        <div>
-                            <img src="/images/headImg/Model-S.avif" alt="" srcset="" />
-                            <h3>Model-S</h3>
-                            <p>
-                                <span>Learn</span>
-                                <span>Order</span>
-                            </p>
-                        </div>
-                        <div>
-                            <img src="/images/headImg/Model-S.avif" alt="" srcset="" />
-                            <h3>Model-S</h3>
-                            <p>
-                                <span>Learn</span>
-                                <span>Order</span>
-                            </p>
-                        </div>
+                        {vehicals && vehicals.map((veh, index) => (
+
+                            <div>
+                                <img src={`/images/headImg/${veh}.avif`} alt="" srcset="" />
+                                <h3>
+                                    {veh}
+                                </h3>
+                                <p>
+                                    <span>Learn</span>
+                                    <span>Order</span>
+                                </p>
+                            </div>
+
+                        ))};
                     </Head1>
                     <div class="vl"></div>
                     <Head2>
                         <div className='Hli'>
-                            <li>Inventory</li>
-                            <li>Used Cars</li>
-                            <li>Demo Drive</li>
-                            <li>Trade In</li>
-                            <li>Compare</li>
-                            <li>Fleet</li>
-                            <li>Cybertruck</li>
-                            <li>Semi</li>
-                            <li>Roadstart</li>
+
+                            {vehicalsData && vehicalsData.map((vehData, index) => (
+                                <li>{vehData}</li>
+                            ))};
                         </div>
                     </Head2>
                 </Container2>
@@ -149,7 +122,7 @@ const Header = () => {
 export default Header
 
 const Container = styled.div`
-   min-height:60px;
+   min-height:80px;
    position:fixed;
    display:flex;
    align-items:center;
@@ -172,7 +145,7 @@ const Menu = styled.div`
         border-radius:5px;
     }
     :hover {
-        background-color:#F7F9F9;
+        background-color:#ECF0F1 ;
      }
     @media(max-width:768px){
         display:none;
@@ -241,8 +214,7 @@ const Container2 = styled.div`
      min-height:300px;
      background-color:white;
      position:fixed;
-     top:3px;
-     padding:50px 10px;
+     padding:100px 10px;
      display: flex;
      margin:auto;
      justify-content:center;

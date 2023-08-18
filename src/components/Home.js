@@ -29,23 +29,25 @@ function Home() {
             </HomeContainer>
 
             <Section
-                title="Model S"
+                title="Model 3"
+                price="Starting at $32,740"
                 description="Order Online For Touchless Delivery"
-                backgroundImg="model-s.jpg"
+                backgroundImg="model-3.jpg"
                 leftBtnText="Custom Order"
                 rightBtnText="Existing Inventory"
             />
             <Section
                 title="Model Y"
+                price="Starting at $40,240"
                 description="Order Online For Touchless Delivery"
                 backgroundImg="model-y.jpg"
                 leftBtnText="Custom Order"
                 rightBtnText="Existing Inventory"
             />
             <Section
-                title="Model 3"
+                title="Model S"
                 description="Order Online For Touchless Delivery"
-                backgroundImg="model-3.jpg"
+                backgroundImg="model-s.jpg"
                 leftBtnText="Custom Order"
                 rightBtnText="Existing Inventory"
             />
@@ -56,16 +58,17 @@ function Home() {
                 leftBtnText="Custom Order"
                 rightBtnText="Existing Inventory"
             />
+
             <Section
-                title="Lowest Cost Solar Panels In America"
-                description="Money-back gurantee"
+                title="Solar Panels"
+                description="Schedule a Virtual Consultation"
                 backgroundImg="solar-panel.jpg"
                 leftBtnText="Order Now"
                 rightBtnText="Learn More"
             />
             <Section
-                title="Solar for New Roofs"
-                description="Solar Roof Costs Less Than A New Roof Plus Solar Panels"
+                title="Solar Roof"
+                description="Produce Clean Energy From Your Roof"
                 backgroundImg="solar-roof.jpg"
                 leftBtnText="Order Now"
                 rightBtnText="Learn More"
