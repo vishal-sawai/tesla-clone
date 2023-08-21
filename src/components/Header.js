@@ -86,7 +86,7 @@ const Header = () => {
                         {vehicals && vehicals.map((veh, index) => (
 
                             <div>
-                                <img src={`/images/headImg/${veh}.avif`} alt="" srcset="" />
+                                <img src={`tesla-clone/images/headImg/${veh}.avif`} alt="" srcset="" />
                                 <h3>
                                     {veh}
                                 </h3>

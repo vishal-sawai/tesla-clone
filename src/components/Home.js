@@ -9,7 +9,7 @@ function Home() {
         <Container>
             <HomeContainer>
                 <video loop muted autoPlay>
-                    <source src="/images/video/Homepage-Demo-Drive-Desktop-NA.webm" type="video/mp4" />
+                    <source src="/tesla-clone/images/video/Homepage-Demo-Drive-Desktop-NA.webm" type="video/mp4" />
                 </video>
                 <Fade bottom>
                     <ItemText>
