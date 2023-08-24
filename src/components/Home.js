@@ -81,7 +81,7 @@ function Home() {
             />
             <Section
                 title="Accessories"
-                backgroundImg="Accessories.jpg"
+                backgroundImg="accessories.jpg"
                 leftBtnText="Shop Now"
             />
         </Container>
